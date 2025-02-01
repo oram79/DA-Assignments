@@ -2,16 +2,25 @@ package LinkedList;
 
 public class Main {
     public static void main(String[] args) {
-        SingleLinkedList sll = new SingleLinkedList();
-        sll.insertInLinkedList(1,0);
-        sll.insertInLinkedList(2, 1);
-        sll.insertInLinkedList(3, 3);
-        sll.insertInLinkedList(4, 4);
-        sll.insertInLinkedList(4, 5);
+        SingleLinkedList list = new SingleLinkedList();
+        list.createdLinkedList(10);
+        list.insertInLinkedList(20,1);
+        list.insertInLinkedList(30,2);
+        list.insertInLinkedList(40,3);
+        list.insertInLinkedList(50,4);
 
+        System.out.println("Linked List Before Deletion:");
+        list.traverseLinkedList();
 
+        list.deleteNode(2);
+        System.out.println("Linked List After Deleting Node At Index 2:");
+        list.traverseLinkedList();
 
-        sll.traverseLinkedList();
-        sll.searchNode(5);
+        list.deleteNode(0);
+        System.out.println("Linked List after deleting head:");
+        list.traverseLinkedList();
+
+        list.deleteNode(10);
+        list.traverseLinkedList();
     }
 }

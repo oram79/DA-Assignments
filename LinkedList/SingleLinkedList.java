@@ -6,7 +6,7 @@ public class SingleLinkedList {
     public int size;
 
     //create a linked list
-    public Node createdLinkedList (int nodeValue) {
+    public Node createdLinkedList(int nodeValue) {
         Node node = new Node();
         node.next = null;
         node.value = nodeValue;
@@ -15,12 +15,6 @@ public class SingleLinkedList {
         size = 1;
         return head;
     }
-
-//    Insert int linked list
-//    0. if the link doesn't
-//    1. inserting at the begining
-//    2. inserting at the ending
-//    3. inserting anywhere
 
     public void insertInLinkedList(int nodeValue, int location) {
         Node node = new Node();
@@ -49,14 +43,14 @@ public class SingleLinkedList {
     }
 
     // Traverse a Linked List
-    public void traverseLinkedList(){
+    public void traverseLinkedList() {
         if (head == null) {
             System.out.println("SLL does not exist");
         } else {
             Node temNode = head;
             for (int i = 0; i < size; i++) {
                 System.out.print(temNode.value);
-                if (i != size -1 ){
+                if (i != size - 1) {
                     System.out.print(" -> ");
                 }
                 temNode = temNode.next;
@@ -65,10 +59,9 @@ public class SingleLinkedList {
         }
     }
 
-
     // search for a Node
 
-    public boolean searchNode (int nodeValue) {
+    public boolean searchNode(int nodeValue) {
         if (head != null) {
             Node tempNode = head;
             for (int i = 0; i < size; i++) {
@@ -83,10 +76,33 @@ public class SingleLinkedList {
         return false;
     }
 
+    public void deleteNode(int location) {
+        if (head == null) {
+            System.out.println("The Linked List Does Not Exist");
+            return;
+        }
 
-    //Deleting a Node from the linked list
-    //0. if the link doesn't
-    //1. delete at the begining
-    //2. delete at the ending
-    //3. delete anywhere
+        if (location == 0) {
+            head = head.next;
+            if (head == null) {
+                tail = null;
+            }
+        } else if (location >= size - 1) {
+            Node tempNode = head;
+            while (tempNode.next != tail) {
+                tempNode = tempNode.next;
+            }
+            tempNode.next = null;
+            tail = tempNode;
+        } else {
+            Node tempNode = head;
+            int index = 0;
+            while (index < location - 1) {
+                tempNode = tempNode.next;
+                index++;
+            }
+            tempNode.next = tempNode.next.next;
+        }
+        size--;
+    }
 }
